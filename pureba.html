@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. [Nombre de la Psicóloga] | Psicología Clínica y Bienestar</title>
+    <style>
+        /* === Variables CSS: Paleta de Colores para Paz y Seguridad === */
+        :root {
+            --color-primary: #607D8B; /* Azul-Gris Sereno - para títulos, botones principales */
+            --color-secondary: #90A4AE; /* Azul-Gris Claro - para acentos sutiles, bordes */
+            --color-accent: #FFC107; /* Ámbar - para resaltados, llamadas a la acción */
+            --color-background-light: #ECEFF1; /* Gris muy claro - para secciones de contenido */
+            --color-background-dark: #F5F5F5; /* Blanco roto - fondo principal del cuerpo */
+            --color-text-dark: #263238; /* Gris oscuro - texto principal */
+            --color-text-light: #546E7A; /* Gris medio - texto secundario, descripciones */
+            --color-border: #CFD8DC; /* Gris claro - para bordes */
+            --color-shadow: rgba(0, 0, 0, 0.1); /* Sombra suave */
+            --color-whatsapp: #25D366; /* Verde WhatsApp */
+            --color-whatsapp-dark: #128C7E; /* Verde WhatsApp oscuro */
+        }
+
+        /* === Estilos Generales === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--color-background-dark);
+            color: var(--color-text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0; /* Espaciado entre secciones */
+            margin-bottom: 2rem; /* Margen inferior entre secciones */
+            opacity: 0; /* Para animación de entrada */
+            transform: translateY(20px); /* Para animación de entrada */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Header / Navegación === */
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-background-light);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-background-light);
+            text-decoration: none;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        header nav ul li a {
+            color: var(--color-background-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+        header nav ul li a:hover {
+            color: var(--color-accent);
+        }
+        /* Menú hamburguesa para móvil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-background-light);
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            header nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-primary);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px var(--color-shadow);
+            }
+            header nav ul.active {
+                display: flex;
+            }
+            header nav ul li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* === Hero Section === */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-background-light);
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-accent);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        .hero .cta-button {
+            background-color: var(--color-accent);
+            color: var(--color-text-dark);
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+            border: none;
+        }
+        .hero .cta-button:hover {
+            background-color: var(--color-background-light);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.6);
+        }
+
+        /* === Sección Sobre Mí === */
+        #about {
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+            text-align: center;
+        }
+        #about .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        #about .about-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 1rem;
+            object-fit: cover;
+            box-shadow: 0 5px 15px var(--color-shadow);
+        }
+        #about .about-text {
+            max-width: 800px;
+        }
+        #about h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        #about h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--color-secondary);
+            bottom: -8px;
+            left: 20%;
+        }
+        #about p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            #about .about-content {
+                flex-direction: row;
+                text-align: left;
+                justify-content: center;
+            }
+            #about .about-img {
+                margin-right: 2rem;
+            }
+        }
+
+        /* === Sección Servicios === */
+        #services {
+            background-color: var(--color-background-dark);
+            text-align: center;
+        }
+        #services h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        #services h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--color-secondary);
+            bottom: -8px;
+            left: 20%;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: var(--color-background-light);
+            padding: 2rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 5px 15px var(--color-shadow);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .service-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid var(--color-secondary);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-text-dark);
+            margin-bottom: 0.75rem;
+        }
+        .service-card p {
+            font-size: 1rem;
+            color: var(--color-text-light);
+        }
+
+        /* === Sección Trayectoria Profesional === */
+        #experience {
+            background-color: var(--color-background-light);
+            text-align: center;
+        }
+        #experience h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        #experience h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--color-secondary);
+            bottom: -8px;
+            left: 20%;
+        }
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--color-secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 1rem 0;
+            position: relative;
+            width: 50%;
+            background-color: var(--color-background-light);
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-item-content {
+            padding: 1.5rem;
+            background-color: var(--color-dark);
+            border-radius: 0.8rem;
+            box-shadow: 0 5px 15px var(--color-shadow);
+            position: relative;
+            border: 1px solid var(--color-secondary);
+        }
+        .timeline-item-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .timeline-item:nth-child(odd) .timeline-item-content {
+            margin-right: 30px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(odd) .timeline-item-content::before {
+            left: 100%;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--color-secondary);
+        }
+        .timeline-item:nth-child(even) .timeline-item-content {
+            margin-left: 30px;
+            text-align: left;
+        }
+        .timeline-item:nth-child(even) .timeline-item-content::before {
+            right: 100%;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--color-secondary) transparent transparent;
+        }
+        .timeline-item-content h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item-content .date {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .timeline-item-content p {
+            font-size: 1rem;
+            color: var(--color-text-light);
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 18px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 1rem;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item:nth-child(odd) .timeline-item-content,
+            .timeline-item:nth-child(even) .timeline-item-content {
+                margin-right: 0;
+                margin-left: 0;
+                text-align: left;
+            }
+            .timeline-item-content::before {
+                right: 100%;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--color-secondary) transparent transparent;
+                left: -10px;
+            }
+        }
+
+        /* === Sección Testimonios === */
+        #testimonials {
+            background-color: var(--color-background-dark);
+            text-align: center;
+        }
+        #testimonials h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        #testimonials h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--color-secondary);
+            bottom: -8px;
+            left: 20%;
+        }
+        .testimonial-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px var(--color-shadow);
+            background-color: var(--color-background-light);
+            padding: 2rem;
+        }
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .testimonial-slide.active {
+            display: block;
+        }
+        .testimonial-slide p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
+        }
+        .testimonial-slide .author {
+            font-weight: bold;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+        .carousel-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .carousel-nav .prev {
+            left: 1rem;
+        }
+        .carousel-nav .next {
+            right: 1rem;
+        }
+
+        /* === Sección Contacto === */
+        #contact {
+            background-color: var(--color-primary);
+            color: var(--color-background-light);
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-background-light);
+            position: relative;
+            display: inline-block;
+        }
+        #contact h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--color-accent);
+            bottom: -8px;
+            left: 20%;
+        }
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-background-light);
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 5px 20px var(--color-shadow);
+            text-align: left;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text-dark);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            background-color: white;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form button {
+            background-color: var(--color-accent);
+            color: var(--color-text-dark);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .contact-form button:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .contact-info {
+            margin-top: 2.5rem;
+            font-size: 1.1rem;
+            color: var(--color-background-light);
+        }
+        .contact-info p {
+            margin-bottom: 0.8rem;
+        }
+        .contact-info a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: var(--color-background-light);
+        }
+
+        /* === Footer === */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-text-light);
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+        footer .social-links {
+            margin-top: 1rem;
+        }
+        footer .social-links a {
+            color: var(--color-text-light);
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* === Botón de "Ir Arriba" === */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--color-primary);
+            color: var(--color-background-light);
+            padding: 0.8rem 1.1rem;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 50;
+            display: none;
+            border: none;
+        }
+        #scrollTopBtn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* === Botón Flotante de WhatsApp === */
+        .whatsapp-float {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--color-whatsapp) 0%, var(--color-whatsapp-dark) 100%);
+            border-radius: 50px; /* rounded-full */
+            box-shadow: 0 0.6rem 1.5rem rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 4rem;
+            height: 4rem;
+            padding: 0;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-0.2rem);
+            box-shadow: 0 1rem 2rem rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-icon {
+            width: 2rem;
+            height: 2rem;
+            fill: white;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            transition: margin-left 0.4s ease;
+        }
+        .whatsapp-text {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            margin-left: 0.8rem;
+            opacity: 0;
+            transform: translateX(0.7rem);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Animaciones para el botón flotante (manejadas por JS, estas son las clases finales) */
+        .whatsapp-float.expanded {
+            width: 18rem;
+            padding-right: 1.5rem;
+        }
+        .whatsapp-float.expanded .whatsapp-icon {
+            margin-left: 1.5rem;
+        }
+        .whatsapp-float.expanded .whatsapp-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* === Animaciones CSS === */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            #about h2, #services h2, #experience h2, #testimonials h2, #contact h2 {
+                font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                padding: 1.5rem;
+            }
+            .whatsapp-float {
+                width: 3.5rem;
+                height: 3.5rem;
+                top: 1rem;
+                right: 1rem;
+            }
+            .whatsapp-icon {
+                width: 1.7rem;
+                height: 1.7rem;
+                margin-left: 0.8rem;
+            }
+            .whatsapp-float.expanded {
+                width: 16rem;
+                padding-right: 1rem;
+            }
+            .whatsapp-float.expanded .whatsapp-icon {
+                margin-left: 1rem;
+            }
+            .whatsapp-text {
+                font-size: 0.9rem;
+            }
+            #scrollTopBtn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                padding: 0.7rem 1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/529811930673?text=¡Hola!%20Me%20interesa%20agendar%20una%20consulta." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <svg class="whatsapp-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path fill="white" d="M16.004 0C7.174 0 0 7.176 0 16c0 2.84.74 5.668 2.145 8.137L.745 32l8.004-2.093C11.14 31.243 13.547 32 16.004 32 24.826 32 32 24.822 32 16S24.826 0 16.004 0zm0 29.297c-2.317 0-4.594-.622-6.598-1.799l-.472-.281-4.892 1.279 1.305-4.77-.309-.489a13.252 13.252 0 01-2.012-7.237c0-7.347 5.981-13.328 13.328-13.328S29.682 8.653 29.682 16c0 7.347-5.981 13.297-13.328 13.297zm7.315-9.977c-.4-.201-2.37-1.169-2.74-1.304-.369-.134-.637-.201-.906.201-.269.402-1.041 1.304-1.276 1.572-.234.269-.469.302-.871.101s-1.698-.626-3.235-1.996c-1.196-1.067-2.004-2.383-2.239-2.785-.234-.402-.025-.62.176-.82.18-.18.402-.469.603-.703.201-.234.268-.402.402-.67.134-.269.067-.502-.034-.703-.101-.201-.906-2.183-1.24-2.987-.325-.783-.657-.906-.69-.234-.012-.502-.015-.77-.015s-.703.101-1.072.502c-.369.402-1.407 1.375-1.407 3.355s1.441 3.888 1.642 4.157c.201.268 2.836 4.332 6.87 6.076.96.414 1.708.662 2.292.847.964.307 1.841.263 2.533.159.772-.115 2.378-.973 2.713-1.912s.335-1.744.234-1.912c-.1-.168-.369-.268-.77-.469z"/>
+        </svg>
+        <span class="whatsapp-text">¡Agenda tu cita!</span>
+    </a>
+
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="logo">Dra. [Nombre]</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#experience">Trayectoria</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <img src="https://placehold.co/180x180/607D8B/FFFFFF?text=Dra.+Nombre" alt="Dra. [Nombre de la Psicóloga]" class="profile-img">
+                <h1>Dra. [Nombre de la Psicóloga]</h1>
+                <p>Tu guía profesional hacia el bienestar emocional y el crecimiento personal.</p>
+                <a href="#contact" class="cta-button">Agenda tu Primera Sesión</a>
+            </div>
+        </section>
+
+        <!-- Sección Sobre Mí -->
+        <section id="about" class="container">
+            <div class="about-content">
+                <img src="https://placehold.co/250x250/90A4AE/FFFFFF?text=Psicóloga+Trabajando" alt="Psicóloga trabajando" class="about-img">
+                <div class="about-text">
+                    <h2>Sobre Mí y Mi Propósito</h2>
+                    <p>Soy la Dra. [Nombre de la Psicóloga], una profesional apasionada por el bienestar mental y emocional, con [X] años de experiencia en el campo de la psicología. Mi propósito es acompañarte en tu camino hacia una vida más plena y consciente, ofreciéndote un espacio seguro y de confianza donde puedas explorar tus emociones, superar desafíos y descubrir tu potencial.</p>
+                    <p>Mi enfoque terapéutico es [Menciona tu enfoque, ej. cognitivo-conductual, humanista, sistémico], adaptándome a las necesidades individuales de cada persona. Creo firmemente en el poder de la conexión humana y en la capacidad de cada individuo para transformar su realidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Servicios -->
+        <section id="services" class="container">
+            <h2>Mis Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="icon">&#129504;</span> <!-- Icono de cerebro/mente -->
+                    <h3>Terapia Individual</h3>
+                    <p>Sesiones personalizadas para abordar ansiedad, depresión, estrés, duelos y crecimiento personal.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">&#128106;</span> <!-- Icono de personas -->
+                    <h3>Terapia de Pareja</h3>
+                    <p>Mejora la comunicación, resuelve conflictos y fortalece la conexión en tu relación.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">&#128107;</span> <!-- Icono de familia -->
+                    <h3>Terapia Familiar</h3>
+                    <p>Apoyo para dinámicas familiares, conflictos generacionales y desarrollo de habilidades parentales.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">&#128218;</span> <!-- Icono de libro/conocimiento -->
+                    <h3>Orientación Vocacional</h3>
+                    <p>Descubre tus intereses y habilidades para tomar decisiones informadas sobre tu futuro profesional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Trayectoria Profesional -->
+        <section id="experience" class="container">
+            <h2>Mi Trayectoria Profesional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h3>Maestría en Psicología Clínica</h3>
+                        <span class="date">Universidad [Nombre de la Universidad], [Año Inicio] - [Año Fin]</span>
+                        <p>Especialización en diagnóstico y tratamiento de trastornos de ansiedad y del estado de ánimo.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h3>Psicóloga en Clínica [Nombre de la Clínica]</h3>
+                        <span class="date">[Año Inicio] - [Año Fin]</span>
+                        <p>Atención a pacientes con diversas problemáticas psicológicas, desarrollo de planes de intervención.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h3>Licenciatura en Psicología</h3>
+                        <span class="date">Universidad [Nombre de la Universidad], [Año Inicio] - [Año Fin]</span>
+                        <p>Formación integral en las bases de la psicología y sus diversas ramas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-content">
+                        <h3>Certificación en Terapia Cognitivo-Conductual</h3>
+                        <span class="date">[Año de Certificación]</span>
+                        <p>Actualización constante en técnicas y herramientas terapéuticas de vanguardia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Testimonios -->
+        <section id="testimonials" class="container">
+            <h2>Lo que mis pacientes dicen</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-slide active">
+                    <p>"La Dra. [Nombre] me brindó el apoyo que necesitaba para superar mi ansiedad. Su empatía y profesionalismo son invaluables."</p>
+                    <span class="author">- Ana G.</span>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"Gracias a las sesiones, mi pareja y yo hemos mejorado nuestra comunicación y conexión. ¡Totalmente recomendada!"</p>
+                    <span class="author">- Carlos y Sofía</span>
+                </div>
+                <div class="testimonial-slide">
+                    <p>"Un espacio seguro donde pude expresarme libremente. La Dra. [Nombre] me ayudó a encontrar herramientas para mi bienestar."</p>
+                    <span class="author">- Javier L.</span>
+                </div>
+                <div class="carousel-nav">
+                    <button class="prev">&lt;</button>
+                    <button class="next">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contact" class="container">
+            <h2>Contacta para una Consulta</h2>
+            <p>Estoy aquí para escucharte y acompañarte. Completa el formulario o contáctame directamente.</p>
+            <div class="contact-form">
+                <form>
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Teléfono (Opcional)</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <p>También puedes contactarme directamente:</p>
+                <p>Teléfono: <a href="tel:+529811234567">+52 981 123 4567</a></p>
+                <p>Email: <a href="mailto:info@psicologanombre.com">info@psicologanombre.com</a></p>
+                <p>Dirección: [Tu Dirección o Ubicación de Consulta]</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Dra. [Nombre de la Psicóloga]. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/30/FFFFFF/facebook-new.png" alt="Facebook"></a>
+                <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/30/FFFFFF/instagram-new.png" alt="Instagram"></a>
+                <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de "Ir Arriba" -->
+    <button id="scrollTopBtn">↑</button>
+
+    <script>
+        // === Funcionalidad del Carrusel de Testimonios ===
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-avance del carrusel
+        let testimonialInterval = setInterval(nextSlide, 7000); // Cambia cada 7 segundos
+
+        // Pausar/Reanudar al interactuar
+        const carousel = document.querySelector('.testimonial-carousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+        carousel.addEventListener('mouseleave', () => {
+            testimonialInterval = setInterval(nextSlide, 7000);
+        });
+
+        // Controles manuales
+        document.querySelector('.carousel-nav .next').addEventListener('click', () => {
+            nextSlide();
+            clearInterval(testimonialInterval); // Detiene el auto-avance al clic manual
+            testimonialInterval = setInterval(nextSlide, 7000); // Reinicia el auto-avance
+        });
+        document.querySelector('.carousel-nav .prev').addEventListener('click', () => {
+            prevSlide();
+            clearInterval(testimonialInterval); // Detiene el auto-avance al clic manual
+            testimonialInterval = setInterval(nextSlide, 7000); // Reinicia el auto-avance
+        });
+
+        // Mostrar la primera diapositiva al cargar
+        showSlide(currentSlide);
+
+        // === Funcionalidad del Botón "Ir Arriba" ===
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'block';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // === Funcionalidad del Botón Flotante de WhatsApp ===
+        function setupWhatsappFloatButton() {
+            const whatsappFloat = document.querySelector('.whatsapp-float');
+            let scrollTimeout;
+            let isExpanded = false;
+
+            const expandButton = () => {
+                if (!isExpanded) {
+                    whatsappFloat.classList.add('expanded');
+                    isExpanded = true;
+                }
+            };
+
+            const contractButton = () => {
+                if (isExpanded) {
+                    whatsappFloat.classList.remove('expanded');
+                    isExpanded = false;
+                }
+            };
+
+            let lastScrollY = 0;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                const currentScrollY = window.scrollY;
+
+                if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+                    expandButton();
+                } else if (currentScrollY < 100 || currentScrollY < lastScrollY) {
+                    contractButton();
+                }
+                lastScrollY = currentScrollY;
+
+                scrollTimeout = setTimeout(contractButton, 2000); // Contrae después de 2 segundos de inactividad
+            });
+
+            whatsappFloat.addEventListener('mouseenter', expandButton);
+            whatsappFloat.addEventListener('mouseleave', () => {
+                // Solo contrae si no se está haciendo scroll
+                if (window.scrollY < 100 || window.scrollY < lastScrollY) {
+                    contractButton();
+                }
+            });
+
+            contractButton(); // Inicializar contraído
+        }
+
+        // === Animación de Secciones al Scroll (Intersection Observer) ===
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target); // Dejar de observar una vez animado
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // === Menú Móvil (Toggle) ===
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            mobileMenu.classList.toggle('open'); // Opcional: para animar el icono de hamburguesa
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        navList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navList.classList.contains('active')) {
+                    navList.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                }
+            });
+        });
+
+        // === Inicialización al cargar el DOM ===
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            setupScrollTopButton();
+            setupWhatsappFloatButton();
+            // No es necesario llamar a showSlide(0) aquí, ya se hace al final del script del carrusel.
+        });
+    </script>
+</body>
+</html>
